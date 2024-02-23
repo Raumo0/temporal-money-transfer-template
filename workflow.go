@@ -8,7 +8,7 @@ import (
 	"go.temporal.io/sdk/workflow"
 )
 
-// @@@SNIPSTART money-transfer-project-template-go-workflow
+// @@@SNIPSTART github.com/Raumo0/temporal-money-transfer-template-workflow
 func MoneyTransfer(ctx workflow.Context, input PaymentDetails) (string, error) {
 
 	// RetryPolicy specifies how to automatically handle retries if an Activity fails.

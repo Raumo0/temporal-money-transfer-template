@@ -6,10 +6,10 @@ import (
 
 	"go.temporal.io/sdk/client"
 
-	"money-transfer-project-template-go/app"
+	"github.com/Raumo0/temporal-money-transfer-template"
 )
 
-// @@@SNIPSTART money-transfer-project-template-go-start-workflow
+// @@@SNIPSTART github.com/Raumo0/temporal-money-transfer-template-start-workflow
 func main() {
 	// Create the client object just once per process
 	c, err := client.Dial(client.Options{})

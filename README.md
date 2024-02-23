@@ -21,8 +21,8 @@ docker-compose up
 In another terminal instance, clone this repo and run this application.
 
 ```bash
-git clone https://github.com/temporalio/money-transfer-project-template-go
-cd money-transfer-project-template-go
+git clone https://github.com/Raumo0/temporal-money-transfer-template
+cd temporal-money-transfer-template
 ```
 
 ### Step 2: Run the Workflow

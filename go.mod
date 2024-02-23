@@ -1,4 +1,4 @@
-module money-transfer-project-template-go/app
+module github.com/Raumo0/temporal-money-transfer-template
 
 go 1.16
 
