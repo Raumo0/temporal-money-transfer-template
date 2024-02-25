@@ -1,5 +1,7 @@
 package app
 
+import "time"
+
 // @@@SNIPSTART github.com/Raumo0/temporal-money-transfer-template-shared-task-queue
 const MoneyTransferTaskQueueName = "TRANSFER_MONEY_TASK_QUEUE"
 
@@ -11,6 +13,7 @@ type PaymentDetails struct {
 	TargetAccount string
 	Amount        int
 	ReferenceID   string
+	DepositTime   time.Time
 }
 
 // @@@SNIPEND

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"time"
 
 	"go.temporal.io/sdk/client"
 
@@ -20,16 +21,19 @@ func main() {
 
 	defer c.Close()
 
+	depositTime := time.Now().UTC().Add(time.Minute * 2)
 	input := app.PaymentDetails{
 		SourceAccount: "85-150",
 		TargetAccount: "43-812",
 		Amount:        250,
 		ReferenceID:   "12345",
+		DepositTime:   depositTime,
 	}
 
 	options := client.StartWorkflowOptions{
-		ID:        "pay-invoice-701",
-		TaskQueue: app.MoneyTransferTaskQueueName,
+		ID:         "pay-invoice-701",
+		TaskQueue:  app.MoneyTransferTaskQueueName,
+		StartDelay: time.Minute,
 	}
 
 	log.Printf("Starting transfer from account %s to account %s for %d", input.SourceAccount, input.TargetAccount, input.Amount)

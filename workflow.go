@@ -40,6 +40,16 @@ func MoneyTransfer(ctx workflow.Context, input PaymentDetails) (string, error) {
 		return "", withdrawErr
 	}
 
+	temporalTime := workflow.Now(ctx)
+	executionDelay := time.Second * 0 // you can set your system execution delay here
+	if sleepDuration := input.DepositTime.Sub(temporalTime) - executionDelay; sleepDuration > 0 {
+		fmt.Println("Sleep duration: ", sleepDuration)
+		err := workflow.Sleep(ctx, sleepDuration)
+		if err != nil {
+			return "", err
+		}
+	}
+
 	// Deposit money.
 	var depositOutput string
 

@@ -2,12 +2,10 @@ package app
 
 import (
 	"errors"
-	"testing"
-
 	"github.com/stretchr/testify/mock"
-
 	"github.com/stretchr/testify/require"
 	"go.temporal.io/sdk/testsuite"
+	"testing"
 )
 
 func Test_SuccessfulTransferWorkflow(t *testing.T) {
@@ -19,6 +17,7 @@ func Test_SuccessfulTransferWorkflow(t *testing.T) {
 		TargetAccount: "43-812",
 		Amount:        250,
 		ReferenceID:   "12345",
+		//DepositTime:   time.Now().UTC(),
 	}
 
 	// Mock activity implementation
