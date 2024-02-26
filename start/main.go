@@ -31,9 +31,10 @@ func main() {
 	}
 
 	options := client.StartWorkflowOptions{
-		ID:         "pay-invoice-701",
-		TaskQueue:  app.MoneyTransferTaskQueueName,
-		StartDelay: time.Minute,
+		ID:                       "pay-invoice-701",
+		TaskQueue:                app.MoneyTransferTaskQueueName,
+		StartDelay:               time.Minute,
+		WorkflowExecutionTimeout: time.Minute * 10,
 	}
 
 	log.Printf("Starting transfer from account %s to account %s for %d", input.SourceAccount, input.TargetAccount, input.Amount)
