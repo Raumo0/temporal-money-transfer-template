@@ -18,7 +18,18 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, app.MoneyTransferTaskQueueName, worker.Options{})
+	options := worker.Options{
+		MaxConcurrentWorkflowTaskPollers:        2,
+		MaxConcurrentActivityTaskPollers:        2,
+		MaxConcurrentLocalActivityExecutionSize: 0,
+		MaxConcurrentActivityExecutionSize:      1, // single thread activity execution
+		MaxConcurrentWorkflowTaskExecutionSize:  2,
+		MaxConcurrentSessionExecutionSize:       0,
+		MaxConcurrentEagerActivityExecutionSize: 0,
+		DisableWorkflowWorker:                   false,
+		DisableEagerActivities:                  true,
+	}
+	w := worker.New(c, app.MoneyTransferTaskQueueName, options)
 
 	// This worker hosts both Workflow and Activity functions.
 	w.RegisterWorkflow(app.MoneyTransfer)
